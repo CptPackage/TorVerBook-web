@@ -98,5 +98,12 @@ public abstract class Account implements Serializable {
 		this.email = email;
 		this.password = pwdHash;
 	}
+
+	@Override
+	public String toString() {
+		return "Account [username=" + username + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", surname=" + surname + ", birthDate=" + birthDate + ", birthDateString=" + birthDateString
+				+ ", phoneNumber=" + phoneNumber + "]";
+	}
 	
 }

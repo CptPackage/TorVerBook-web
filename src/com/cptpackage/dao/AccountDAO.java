@@ -21,13 +21,11 @@ public class AccountDAO {
 	private DBManager dbManager;
 	private Account currentAccount;
 	private ResultSet result;
-	private AccountType accountType;
-	private String errorMessage = "";
 
 	// login case
 	public Account logIn(String username, String password) throws SQLException, ParseException {
 		dbManager = DBManager.getInstance();
-		accountType = getAccountTypeByPrefix(username);
+		AccountType accountType = getAccountTypeByPrefix(username);
 		if (accountType == USER) {
 			result = dbManager.userLogIn(username, password);
 		} else if (accountType == RULE_CHECKER) {
@@ -35,20 +33,17 @@ public class AccountDAO {
 		}
 		// if exists 1 row in result, then we succesfully logged in
 		if (result.first()) {
-			return createAccountObject(result);
+			return createAccountObject(result, accountType);
 		}
 		return null;
 	}
 
 	public void registerUser(User user) throws SQLException {
 		dbManager = DBManager.getInstance();
-		if (dbManager.insertNewUser(user)) {
-			currentAccount = user;
-			accountType = USER;
-		}
+		dbManager.insertNewUser(user);
 	}
 
-	private Account createAccountObject(ResultSet result) throws SQLException, ParseException {
+	private Account createAccountObject(ResultSet result, AccountType accountType) throws SQLException, ParseException {
 		Account account = null;
 		if (accountType == USER) {
 			User user = new User(result.getString("Name"), result.getString("Surname"), result.getString("Username"),
@@ -72,19 +67,10 @@ public class AccountDAO {
 		return account;
 	}
 
-	public void updateAccountInfo(Account modifiedAccount) throws SQLException {
-		// quando un utente aggiorna le proprie informazioni
+	public boolean updateAccountInfo(String originalUsername, Account modifiedAccount) throws SQLException {
 		dbManager = DBManager.getInstance();
-		boolean operationSucceded = false;
-		operationSucceded = dbManager.updateAccountInfo(modifiedAccount, accountType, currentAccount.getUsername());
-
-		if (operationSucceded) {
-			// se l'update va a buon fine gli attributi di newUser vengono aggiornati
-			currentAccount.changeProfileSettings(modifiedAccount.getName(), modifiedAccount.getSurname(),
-					modifiedAccount.getUsername(), modifiedAccount.getEmail(), modifiedAccount.getPassword());
-			currentAccount.setBirthDate(modifiedAccount.getBirthDateString());
-			currentAccount.setPhoneNumber(modifiedAccount.getPhoneNumber());
-		}
+		AccountType accountType = modifiedAccount.getUsername().startsWith("@") ? RULE_CHECKER : USER;
+		return dbManager.updateAccountInfo(modifiedAccount, accountType, originalUsername);
 	}
 
 	public Account getAccountObject() {
@@ -112,13 +98,6 @@ public class AccountDAO {
 		return instance;
 	}
 
-	public String getErrorMessage() {
-		return errorMessage;
-	}
-
-	public AccountType getAccountType() {
-		return accountType;
-	}
 
 	public AccountType getAccountTypeByPrefix(String username) {
 		final String prefixFlag = "@";

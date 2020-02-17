@@ -62,51 +62,66 @@
 			</a> </panel>
 
 			<panel class="central-panel col-lg-6">
-			<form action="/TorVerBook-Web/settings">
-			<% Account account = (Account) request.getSession().getAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME);%>
+			<form method="POST" action="/TorVerBook-Web/settings">
+				<%
+					Account account = (Account) request.getSession().getAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME);
+				%>
 				<div class="form-group">
 					<label for="first-name-input">Firstname</label> <input type="text"
 						class="form-control" id="first-name-input"
 						placeholder="John_Doe_XX"
-						value="<%= account.getName() %>">
+						name="<%=RequestAttributes.FIRSTNAME_ATTRIBUTE_NAME%>"
+						value="<%=account.getName()%>">
 				</div>
 				<div class="form-group">
 					<label for="last-name-input">Lastname</label> <input type="text"
-						class="form-control" id="last-name-input" placeholder="Doe" value="<%= account.getSurname() %>">
+						class="form-control" id="last-name-input" placeholder="Doe"
+						value="<%=account.getSurname()%>"
+						name="<%=RequestAttributes.LASTNAME_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
 					<label for="birth-date-input">Birthdate</label> <input type="date"
-						class="form-control" id="birth-date-input" value="<%= account.getBirthDateString()%>">
+						class="form-control" id="birth-date-input"
+						value="<%=account.getBirthDateString()%>"
+						name="<%=RequestAttributes.BIRTHDATE_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
 					<label for="phone-number-input">Phone Number</label> <input
 						type="text" class="form-control" id="phone-number-input"
-						placeholder="(+39) XXXXXXXXXX" value="<%= account.getPhoneNumber() %>">
+						placeholder="(+39) XXXXXXXXXX"
+						value="<%=account.getPhoneNumber()%>"
+						name="<%=RequestAttributes.PHONENUMBER_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
 					<label for="username-input">Username</label> <input type="text"
-						class="form-control" id="username-input" placeholder="John_Doe_XX" value="<%= account.getUsername() %>">
+						class="form-control" id="username-input" placeholder="John_Doe_XX"
+						value="<%=account.getUsername()%>"
+						name="<%=RequestAttributes.USERNAME_ATTRIBUTE_NAME%>">
 				</div>
 
 
 				<div class="form-group">
 					<label for="email-input">Email</label> <input type="email"
 						class="form-control" id="email-input"
-						placeholder="email@serviceprovider.com" value="<%= account.getEmail() %>">
+						placeholder="email@serviceprovider.com"
+						value="<%=account.getEmail()%>"
+						name="<%=RequestAttributes.EMAIL_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
 					<label for="password-input">Password</label> <input type="password"
 						class="form-control" id="password-input"
-						placeholder="*****************" value="<%= account.getPassword() %>">
+						placeholder="*****************" value="<%= account.getPassword() %>"
+						name="<%=RequestAttributes.PW_ATTRIBUTE_NAME%>">
 				</div>
 				<div class="form-group">
 					<label for="password-input">Confirm Password</label> <input
 						type="password" class="form-control" id="password-input"
-						placeholder="*****************" value="<%= account.getPassword() %>">
+						placeholder="*****************" value="<%=account.getPassword()%>"
+						name="<%=RequestAttributes.PW_CONFIRM_ATTRIBUTE_NAME%>">
 				</div>
 				<button class="btn btn-dark">Update Settings</button>
 			</form>
@@ -115,17 +130,17 @@
 			<panel class="right-panel col-lg-3">
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
@@ -133,17 +148,17 @@
 			</div>
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
@@ -152,17 +167,17 @@
 
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
-					<h5 class="chat-message">${username}:Hello this is a test
+					<h5 class="chat-message">${username}:Hellothisis a test
 						message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"

@@ -1,6 +1,8 @@
 package com.cptpackage.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -8,14 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cptpackage.account.Account;
+import com.cptpackage.account.User;
 import com.cptpackage.constants.RequestAttributes;
+import com.cptpackage.dao.AccountDAO;
 
 public class SettingsController extends AuthenticatedController {
 
 	private static final long serialVersionUID = 1824973637829886223L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			super.doGet(req, resp);
 			if (authenticatedUser) {
@@ -27,8 +31,38 @@ public class SettingsController extends AuthenticatedController {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+		try {
+			if (authenticatedUser) {
+				Account originalAccount = (Account) req.getSession()
+						.getAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME);
+				String originalUsername = originalAccount.getUsername();
+				Account modifiedAccount = mapRequestParamToAccountObj(req);
+				boolean updated = AccountDAO.getInstance().updateAccountInfo(originalUsername, modifiedAccount);
+				if (updated) {
+					req.getSession().setAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME, modifiedAccount);
+				}
+			}
+			req.getRequestDispatcher("/settings.jsp").forward(req, resp);
+		} catch (ServletException | IOException | SQLException | ParseException ex) {
+			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
+		}
+	}
+
+	private Account mapRequestParamToAccountObj(HttpServletRequest req) throws SQLException, ParseException {
+		String username = req.getParameter(RequestAttributes.USERNAME_ATTRIBUTE_NAME);
+		String password = req.getParameter(RequestAttributes.PW_ATTRIBUTE_NAME);
+		String firstName = req.getParameter(RequestAttributes.FIRSTNAME_ATTRIBUTE_NAME);
+		String lastName = req.getParameter(RequestAttributes.LASTNAME_ATTRIBUTE_NAME);
+		String birthdate = req.getParameter(RequestAttributes.BIRTHDATE_ATTRIBUTE_NAME);
+		String email = req.getParameter(RequestAttributes.EMAIL_ATTRIBUTE_NAME);
+		String phoneNumber = req.getParameter(RequestAttributes.PHONENUMBER_ATTRIBUTE_NAME);
+
+		Account account = new User(firstName, lastName, username, email, password);
+		account.setBirthDate(birthdate);
+		account.setPhoneNumber(phoneNumber);
+
+		return account;
 	}
 
 }
