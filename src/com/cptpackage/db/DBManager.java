@@ -5,23 +5,33 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import com.cptpackage.account.Account;
 import com.cptpackage.account.AccountType;
 import com.cptpackage.account.User;
 import com.cptpackage.ad.Ad;
+import com.cptpackage.db.QueriesGenerator.DB_ACTIONS;
 
 public class DBManager {
 
 	private static String dbUrl = "jdbc:mysql://torverbook.clnw3ivtnsjr.eu-west-2.rds.amazonaws.com:3306/torverbook?autoReconnect=true&useSSL=false";
 	private static String user = "admin";
-	private static String pwd = "QVIavmKCXTKFkSbRMX34";
+	private static final String pwd = "QVIavmKCXTKFkSbRMX34";
 	private static String driverClass = "com.mysql.jdbc.Driver";
-
+	private static Logger logger = Logger.getLogger("DBManager");
 	private static DBManager instance = null;
 
 	Statement stmt = null;
 	Connection conn = null;
+
+	static {
+		try {
+			Class.forName(driverClass);
+		} catch (ClassNotFoundException e) {
+			Logger.getLogger("DBManager").severe("MYSQL Connector Class not found!");
+		}
+	}
 
 	public ResultSet ruleCheckerLogIn(String username, String password) throws SQLException {
 		init();
@@ -32,7 +42,7 @@ public class DBManager {
 		init();
 		return stmt.executeQuery(QueriesGenerator.getUserLogInQuery(username, password));
 	}
-
+	
 	public boolean insertNewUser(User userObj) throws SQLException {
 		init();
 		return !stmt.execute(QueriesGenerator.getSignUpCommand(userObj));
@@ -169,14 +179,29 @@ public class DBManager {
 			conn.close();
 	}
 
+	public DBActionResult processDBAction(DB_ACTIONS action, String statementCmd) {
+		DBActionResult actionResult = new DBActionResult();
+		Connection dbConnection = null;
+		Statement statement;
+
+		try {
+			dbConnection = DriverManager.getConnection(dbUrl, user, pwd);
+			statement = dbConnection.createStatement();
+			if (action == DB_ACTIONS.EXECUTE) {
+				actionResult = new DBActionResult(!statement.execute(statementCmd));
+			} else if (action == DB_ACTIONS.QUERY) {
+				actionResult = new DBActionResult(statement.executeQuery(statementCmd));
+			}
+		} catch (SQLException ex) {
+			logger.severe(ex.getMessage());
+		}
+
+		return actionResult;
+	}
+
 	public static DBManager getInstance() {
 		if (instance == null) {
 			instance = new DBManager();
-			try {
-				Class.forName(driverClass);
-			} catch (ClassNotFoundException e) {
-				System.exit(25);
-			}
 		}
 		return instance;
 	}

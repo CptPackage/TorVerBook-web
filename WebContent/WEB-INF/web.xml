@@ -40,4 +40,53 @@
 		<url-pattern>/dashboard</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>settingsController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.SettingsController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>settingsController</servlet-name>
+		<url-pattern>/settings</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>addAdController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.AddAdController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>addAdController</servlet-name>
+		<url-pattern>/add-ad</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>personalAdsController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.PersonalAdsController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>personalAdsController</servlet-name>
+		<url-pattern>/personal-ads</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>personalReviewsController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.PersonalReviewsController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>personalReviewsController</servlet-name>
+		<url-pattern>/personal-reviews</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>favouriteListController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.FavouriteListController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>favouriteListController</servlet-name>
+		<url-pattern>/favourite</url-pattern>
+	</servlet-mapping>
 </web-app>

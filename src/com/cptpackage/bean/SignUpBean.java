@@ -1,20 +1,14 @@
 package com.cptpackage.bean;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import com.cptpackage.account.User;
 
 public class SignUpBean {
 
-	private Date date;
-
-	public SignUpBean() {
-	}
-
 	public boolean checkInfo(User user) {
 		boolean expression = false;
-
+		
 		if ((user.getName().length() > 15) || user.getName().equals(""))
 			return expression;
 		if ((user.getSurname().length() > 15) || user.getSurname().equals(""))

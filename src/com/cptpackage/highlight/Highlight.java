@@ -14,9 +14,7 @@ public final class Highlight implements HighlightInterface{
 	private Color backgroundColor;
 	private String style;
 	private HighlightType hlType;
-	
-	public Highlight() {}
-	
+		
 	//getters() and setters()
 	public HighlightType getHighlightType() {
 		return hlType;
@@ -118,7 +116,6 @@ public final class Highlight implements HighlightInterface{
 
 	@Override
 	public boolean isExpired() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

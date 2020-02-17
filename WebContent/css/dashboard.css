@@ -1,110 +1,41 @@
-:root {
-  --primary-color: #2ecc71;
-  --secondary-color: #fed330;
-  --primary-font: "Montserrat", sans-serif;
-  --secondary-font: "Comfortaa", cursive;
-}
-
-.main-panels-container {
-  width: 100%;
-  height: 100%;
-  padding-top: 5px;
-  margin-left: 0% !important;
-  background: #00000080;
-}
-
-.main-panels-container panel {
-  height: 100%;
-  padding: 0px;
-  overflow: auto;
-}
-
-.main-panels-container panel.left-panel button {
-  width: 100%;
-  height: calc(100% / 6);
-  background: var(--primary-color);
-  border-style: none;
-  font-family: var(--primary-font);
-  font-size: 30px;
-  font-weight: 500;
-  color: white;
-  text-align: left;
-}
-
-.main-panels-container panel.left-panel button i {
-  float: left;
-  margin: 6px 20px 0px 10px;
-}
-
-.main-panels-container panel.left-panel button:hover {
-  background: var(--secondary-color);
-}
-
-.main-panels-container panel.right-panel .chat-container {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.main-panels-container panel.right-panel .chat-container .chat-message-input {
-  width: 100%;
-  height: 38px;
-  background: white;
-  border-radius: 0px;
-  border: none;
-}
-
-.main-panels-container
-  panel.right-panel
-  .chat-container
-  .chat-messages-container {
-  width: 100%;
-  background: white;
-  margin: 0px;
-  padding: 10px;
-  height: 25vh;
-  overflow-y: auto;
-}
-
-.main-panels-container
-  panel.right-panel
-  .chat-container
-  .chat-messages-container
-  .chat-message {
-  width: 100%;
-}
-/* 
-.main-panels-container panel.central-panel .search-bar-container {
-} */
-
-.main-panels-container panel.central-panel .search-bar-container form {
+.central-panel .search-bar-container form {
   /* background: #3e3d4b; */
   background: var(--primary-color);
   border: 1px solid #3e3d4b50;
   padding: 10px 2px;
-  /* display: flex; */
 }
 
-.main-panels-container panel.central-panel .search-bar-container form label {
+.central-panel .search-bar-container form * {
+  margin-left: 5px;
+}
+
+.central-panel .search-bar-container form label {
   font-family: var(--secondary-font);
+  margin-top: 8px;
+  color: #ffffff;
+  font-weight: 600;
 }
 
-.main-panels-container
-  panel.central-panel
-  .search-bar-container
-  form
-  .form-group {
-  display: inline-block;
+.central-panel .search-bar-container form .form-group {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-panels-container
-  panel.central-panel
-  .search-bar-container
-  form
-  .form-group
-  select {
+.central-panel .search-bar-container form .form-group select {
   width: 80px;
 }
 
-.main-panels-container panel.central-panel .search-bar-container form * {
-  margin-left: 5px;
+.central-panel #price-label-value {
+  margin: 5px;
+}
+
+.central-panel .search-bar-container form .form-group input[type="range"] {
+  width: 140px;
+}
+
+.central-panel .search-bar-container form button {
+  font-family: var(--secondary-font);
+  font-weight: 600;
+  color: #27ae60;
 }

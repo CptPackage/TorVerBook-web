@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.cptpackage.account.User;
+import com.cptpackage.dao.HighlightDAO;
 import com.cptpackage.highlight.Highlight;
 
 import javafx.scene.paint.Color;
@@ -214,6 +215,9 @@ public final class Ad {
 	}
 
 	public void setHighlight(String myHighlightType) throws SQLException {
+		HighlightDAO hlDao = new HighlightDAO();
+		hlDao.createHighlightObject(myHighlightType);
+		this.myHighlight = hlDao.getHighlightObject(); // bind ad-highlight
 	}
 
 	public void setType(String type) {
@@ -238,5 +242,16 @@ public final class Ad {
 	public boolean isConvalidated() {
 		return isConvalidated;
 	}
+
+	@Override
+	public String toString() {
+		return "Ad [date=" + date + ", description=" + description + ", title=" + title + ", category=" + category
+				+ ", price=" + price + ", quantity=" + quantity + ", type=" + type + ", isSold=" + isSold
+				+ ", startDateHighlight=" + startDateHighlight + ", finishDateHighlight=" + finishDateHighlight
+				+ ", id=" + id + ", myUser=" + myUser + ", myUserStr=" + myUserStr + ", isConvalidated="
+				+ isConvalidated + ", myHighlight=" + myHighlight + ", format=" + format + "]";
+	}
+
+	
 	
 }

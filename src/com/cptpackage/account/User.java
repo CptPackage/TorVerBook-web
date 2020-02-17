@@ -17,11 +17,10 @@ public final class User extends Account {
 	private int numViolations;
 	private int money;
 
-	private Ad[] myAdList = null;
-	private Ad[] favouriteAds = null;
-	private Message[] myMessageList = null;
-	private User[] relatedUser = null;
-	private Review[] ownReview = null;
+	private Ad[] myAdList;
+	private Ad[] favouriteAds;
+	private Message[] myMessageList;
+	private Review[] ownReview;
 
 	public User(String name, String surname, String username, String email, String password)
 			throws SQLException, ParseException {
@@ -43,9 +42,6 @@ public final class User extends Account {
 
 	public Review[] getMyReviews() {
 		return ownReview;
-	}
-
-	public void writeReview(User dest, String mex, byte rank) {
 	}
 
 	public void addAd(Ad ad) {
@@ -94,8 +90,6 @@ public final class User extends Account {
 		return true;
 	}
 
-	public void sendMessage(Message mex) {
-	}
 
 	@Override
 	public void setBirthDate(String date) { // yyyy-mm-dd format
@@ -139,6 +133,22 @@ public final class User extends Account {
 
 	public int getNumViolations() {
 		return this.numViolations;
+	}
+
+	public void setMyAdList(Ad[] myAdList) {
+		this.myAdList = myAdList;
+	}
+
+	public Message[] getMyMessageList() {
+		return myMessageList;
+	}
+
+	public void setMyMessageList(Message[] myMessageList) {
+		this.myMessageList = myMessageList;
+	}
+
+	public int getMoney() {
+		return money;
 	}
 
 	@Override

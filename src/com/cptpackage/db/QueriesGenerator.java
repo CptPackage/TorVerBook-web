@@ -10,7 +10,13 @@ import com.cptpackage.utils.DateAndTimeUtils;
 
 /* DOC. TIPS:: Fields Types Are (CONDITION:SELECT,INSERT,UPDATE,QUERY) */
 public interface QueriesGenerator {
-
+	
+	public enum DB_ACTIONS {
+		QUERY,
+		EXECUTE,
+		UNDEFINED
+	}
+	
 	public static String getUserLogInQuery(String username, String password) {
 		/* CONDITION FIELDS: [USERNAME] [PASSWORD] */
 		return "SELECT * FROM User WHERE Username = '" + username + "'" + " AND Password = '" + password + "';";

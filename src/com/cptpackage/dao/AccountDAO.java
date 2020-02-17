@@ -25,9 +25,8 @@ public class AccountDAO {
 	private String errorMessage = "";
 
 	// login case
-	public boolean logIn(String username, String password) throws SQLException, ParseException {
+	public Account logIn(String username, String password) throws SQLException, ParseException {
 		dbManager = DBManager.getInstance();
-		errorMessage = "";
 		accountType = getAccountTypeByPrefix(username);
 		if (accountType == USER) {
 			result = dbManager.userLogIn(username, password);
@@ -36,9 +35,9 @@ public class AccountDAO {
 		}
 		// if exists 1 row in result, then we succesfully logged in
 		if (result.first()) {
-			return createAccountObject(); 
+			return createAccountObject(result);
 		}
-		return false;
+		return null;
 	}
 
 	public void registerUser(User user) throws SQLException {
@@ -49,8 +48,8 @@ public class AccountDAO {
 		}
 	}
 
-	private boolean createAccountObject() throws SQLException, ParseException {
-		// creazione dell'effettivo oggetto User/Rule Checker
+	private Account createAccountObject(ResultSet result) throws SQLException, ParseException {
+		Account account = null;
 		if (accountType == USER) {
 			User user = new User(result.getString("Name"), result.getString("Surname"), result.getString("Username"),
 					result.getString("Email"), result.getString("Password"));
@@ -59,11 +58,7 @@ public class AccountDAO {
 			user.setMoney(result.getInt("Money"));
 			user.setNumViolations(result.getInt("NumViolations"));
 			user.setStatus(result.getInt("isBanned"));
-			currentAccount = user;
-			if(user.isBanned()) {
-				errorMessage = "USER_BANNED";System.out.println("errorMessage = " + errorMessage);
-				return false;
-			}
+			account = user;
 		} else if (accountType == RULE_CHECKER) {
 			RuleChecker ruleChecker = new RuleChecker(result.getString("Name"), result.getString("Surname"),
 					result.getString("Username"), result.getString("Email"), result.getString("Password"));
@@ -72,9 +67,9 @@ public class AccountDAO {
 			ruleChecker.setSalary(result.getInt("Salary"));
 			ruleChecker.setWorkStartTime(LocalDate.parse(result.getString("WorkStartTime")));
 			ruleChecker.setworkFinishTime(LocalDate.parse(result.getString("WorkFinishTime")));
-			currentAccount = ruleChecker;
+			account = ruleChecker;
 		}
-		return true;
+		return account;
 	}
 
 	public void updateAccountInfo(Account modifiedAccount) throws SQLException {
@@ -120,7 +115,7 @@ public class AccountDAO {
 	public String getErrorMessage() {
 		return errorMessage;
 	}
-	
+
 	public AccountType getAccountType() {
 		return accountType;
 	}

@@ -13,20 +13,15 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-
-<!-- FontAwesome CSS CDN -->
-<link
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet" />
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <!-- Google Fonts API CDN -->
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900&display=swap"
-	rel="stylesheet" />
+	rel="stylesheet">
 <link
 	href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap"
-	rel="stylesheet" />
+	rel="stylesheet">
 
 <title>TorverBook - Dashboard</title>
 </head>
@@ -37,93 +32,110 @@
 	</header>
 	<div id="content-container">
 		<div class="row main-panels-container">
-			<panel class="left-panel col-lg-3">
-			<button>
-				<em class="fa fa-home"></em> Home
-			</button>
-			<button>
-				<em class="fa fa-gear"></em> Settings
-			</button>
-			<button>
-				<em class="fa fa-plus"></em> Add Ad
-			</button>
-			<button>
-				<em class="fa fa-bookmark"></em> My Ads
-			</button>
-			<button>
-				<em class="fa fa-th-list"></em> My Reviews
-			</button>
-			<button>
-				<em class="fa fa-star"></em> Favourite List
-			</button>
-			</panel>
-
+			<panel class="left-panel col-lg-3"> <a
+				href="/TorVerBook-Web/dashboard">
+				<button class="active">
+					<em class="fa fa-home" /></em> Home
+				</button>
+			</a> <a href="/TorVerBook-Web/settings">
+				<button>
+					<em class="fa fa-gear" /></em> Settings
+				</button>
+			</a> <a href="/TorVerBook-Web/add-ad">
+				<button>
+					<em class="fa fa-plus" /></em> Add Ad
+				</button>
+			</a> <a href="/TorVerBook-Web/personal-ads">
+				<button>
+					<em class="fa fa-bookmark" /></em> My Ads
+				</button>
+			</a> <a href="/TorVerBook-Web/personal-reviews">
+				<button>
+					<em class="fa fa-th-list" /></em> My Reviews
+				</button>
+			</a> <a href="/TorVerBook-Web/favourite">
+				<button>
+					<em class="fa fa-star" /></em> Favourite List
+				</button>
+			</a> </panel>
 			<panel class="central-panel col-lg-6">
 			<div class="search-bar-container">
 				<form action="">
 					<div class="form-group">
 						<label for="category-input">Category</label> <select
 							class="custom-select custom-select-sm" id="category-input">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
+							<option>ANY</option>
+							<option>ALGORITHMS</option>
+							<option>MATH</option>
+							<option>HISTORY</option>
+							<option>GEOMETRY</option>
+							<option>LAW</option>
+							<option>ECONOMY</option>
+							<option>LITERATURE</option>
+							<option>PHILOSOPHY</option>
+							<option>PHYSICS</option>
+							<option>COMPUTER_SCIENCE</option>
+							<option>CHEMISTRY</option>
 						</select>
 					</div>
 
 					<div class="form-group">
 						<label for="type-input">Type</label> <select
 							class="custom-select custom-select-sm" id="type-input">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
+							<option>SALE</option>
+							<option>EXCHANGE</option>
 						</select>
 					</div>
 
 					<div class="form-group">
-						<label id="price-label" for="price-input"> Price </label> <input
-							type="range" id="price-input" class="custom-range" min="1"
-							max="100" />
+						<label id="price-label" for="price-input"> Price<span
+							id="price-label-value"></span>
+						</label> <input type="range" id="price-input" class="custom-range"
+							oninput="$('#price-label-value').text('(' + this.value + ')') "
+							min="1" max="100" value="1" />
 					</div>
 					<button class="search-button btn btn-light">Search</button>
 				</form>
 			</div>
+
+			<div class="ads-container">
+				<ad class="ad-container">
+				<div class="title">Data Structures and Algorithms</div>
+				<div class="info-container">
+					<span class="price"><i
+						class="price-icon fa fa-money-check-alt"></i> 15</span> <span
+						class="quantity">(15 Pieces left)</span>
+				</div>
+				<div class="description">A book that regards the computer
+					science's most essential concepts which are the computer data
+					structures and algorithms.</div>
+				<button class="btn btn-primary send-message">Send Message</button>
+				</ad>
+			</div>
+
 			</panel>
 
 			<panel class="right-panel col-lg-3">
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
 			</div>
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
@@ -131,22 +143,17 @@
 
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothis is a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
 			</div>
+
 			</panel>
 		</div>
 	</div>
@@ -164,6 +171,10 @@
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
 	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	crossorigin="anonymous"></script>
+
+<!-- FontAwesome JS CDN -->
+<script src="https://kit.fontawesome.com/8526e38f8c.js"
 	crossorigin="anonymous"></script>
 
 </html>
