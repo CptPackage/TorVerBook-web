@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.cptpackage.constants.RequestAttributes"%>
+<%@page import="com.cptpackage.ad.Ad"%>
+<%@page import="java.util.List"%>
 <html lang="Java">
 
 
@@ -24,7 +28,7 @@
 	href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap"
 	rel="stylesheet">
 
-<title>TorverBook - Dashboard</title>
+<title>TorverBook - Favourites</title>
 </head>
 
 <body>
@@ -43,7 +47,7 @@
 					<em class="fa fa-gear" /></em> Settings
 				</button>
 			</a> <a href="/TorVerBook-Web/add-ad">
-				<button >
+				<button>
 					<em class="fa fa-plus" /></em> Add Ad
 				</button>
 			</a> <a href="/TorVerBook-Web/personal-ads">
@@ -61,18 +65,31 @@
 			</a> </panel>
 			<panel class="central-panel col-lg-6">
 			<div class="ads-container">
+				<%
+				Object listObj = request.getAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME);
+				List<Ad> list = new ArrayList<Ad>();
+				if (listObj != null) {
+					list = (List<Ad>) listObj;
+				}
+					for (int i = 0; i < list.size(); i++) {
+						Ad ad = list.get(i);
+				%>
 				<ad class="ad-container">
-				<div class="title">Data Structures and Algorithms</div>
+				<div class="title"><%=ad.getTitle()%></div>
 				<div class="info-container">
-					<span class="price"><i
-						class="price-icon fa fa-money-check-alt"></i> 15</span> <span
-						class="quantity">(15 Pieces left)</span>
+					<span class="price"><em
+						class="price-icon fa fa-money-check-alt"></em> <%=ad.getPrice()%></span>
+					<span class="quantity">(<%=ad.getQuantity()%> left)
+					</span>
 				</div>
-				<div class="description">A book that regards the computer
-					science's most essential concepts which are the computer data
-					structures and algorithms.</div>
-				<button class="btn btn-primary send-message">Send Message</button>
+				<div class="description"><%=ad.getDescription()%></div>
+				<h6>
+					<em class="fa fa-book"></em>
+					<%=ad.getCategory()%></h6>
 				</ad>
+				<%
+					}
+				%>
 			</div>
 
 			</panel>
@@ -80,36 +97,24 @@
 			<panel class="right-panel col-lg-3">
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
 			</div>
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
@@ -117,18 +122,12 @@
 
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
-					<h5 class="chat-message">${username}:Hellothisis a test
-						message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />

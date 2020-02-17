@@ -1,9 +1,12 @@
 package com.cptpackage.account;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public abstract class Account {
+public abstract class Account implements Serializable {
 
+	private static final long serialVersionUID = 2546587225337459667L;
+	
 	// User's account info
 	protected String username;
 	protected String email;

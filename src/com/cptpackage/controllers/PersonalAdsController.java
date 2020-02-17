@@ -1,11 +1,19 @@
 package com.cptpackage.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.cptpackage.account.Account;
+import com.cptpackage.ad.Ad;
+import com.cptpackage.constants.RequestAttributes;
+import com.cptpackage.dao.AdDAO;
 
 public class PersonalAdsController extends AuthenticatedController {
 
@@ -16,15 +24,15 @@ public class PersonalAdsController extends AuthenticatedController {
 		try {
 			super.doGet(req, resp);
 			if (authenticatedUser) {
+				Account account = (Account) req.getSession().getAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME);
+				List<Ad> ads = AdDAO.getInstance().loadMyAds(account);
+				if (ads != null && !ads.isEmpty()) {
+					req.setAttribute("ads-list", ads);
+				}
 				req.getRequestDispatcher("/personal-ads.jsp").forward(req, resp);
 			}
-		} catch (ServletException | IOException ex) {
+		} catch (ServletException | IOException | SQLException | ParseException ex) {
 			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
 		}	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
-	}
-
 }

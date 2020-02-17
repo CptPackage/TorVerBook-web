@@ -1,11 +1,18 @@
 package com.cptpackage.controllers;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.cptpackage.ad.Ad;
+import com.cptpackage.constants.RequestAttributes;
+import com.cptpackage.dao.AdDAO;
 
 public class FavouriteListController extends AuthenticatedController {
 
@@ -16,16 +23,16 @@ public class FavouriteListController extends AuthenticatedController {
 		try {
 			super.doGet(req, resp);
 			if (authenticatedUser) {
+				String username = (String) req.getSession().getAttribute(RequestAttributes.USERNAME_ATTRIBUTE_NAME);
+				List<Ad> ads = AdDAO.getInstance().loadFavouriteAds(username);
+				if (!ads.isEmpty()) {
+					req.setAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME, ads);
+				}
 				req.getRequestDispatcher("/favourite-list.jsp").forward(req, resp);
 			}
-		} catch (ServletException | IOException ex) {
+		} catch (ServletException | IOException | SQLException | ParseException ex) {
 			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
 		}
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		super.doPost(req, resp);
 	}
 
 }

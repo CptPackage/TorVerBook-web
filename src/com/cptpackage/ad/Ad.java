@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.cptpackage.account.Account;
 import com.cptpackage.account.User;
 import com.cptpackage.dao.HighlightDAO;
 import com.cptpackage.highlight.Highlight;
@@ -29,29 +30,29 @@ public final class Ad {
 
 	// Ad's info for system
 	private long id;
-	private User myUser;
-	private String myUserStr;
+	private Account account;
+	private String username;
 	private boolean isConvalidated;
 	private Highlight myHighlight;
 
 	private static final String DATE_STRING_FORMAT = "yyyy-MM-dd";
 	private final SimpleDateFormat format = new SimpleDateFormat(DATE_STRING_FORMAT);
 
-	public Ad(User owner, long id) {
-		myUser = owner;
-		myUserStr = myUser.getUsername();
+	public Ad(Account owner, long id) {
+		account = owner;
+		username = account.getUsername();
 		this.id = id;
 		format.setLenient(false);
 	}
 
 	public Ad(String username, long id) {
-		myUserStr = username;
+		this.username = username;
 		this.id = id;
 	}
 
 	// getters()
 	public String getOwnerUsername() {
-		return myUserStr;
+		return username;
 	}
 
 	public long getId() {
@@ -127,12 +128,12 @@ public final class Ad {
 	}
 
 	// setters()
-	public void setMyUserString(String owner) {
-		this.myUserStr = owner;
+	public void setOwnerUsername(String owner) {
+		this.username = owner;
 	}
 
-	public void setMyUserObj(User owner) {
-		myUser = owner;
+	public void setAccount(Account owner) {
+		account = owner;
 	}
 
 	public void setDate(String date) throws ParseException {
@@ -230,7 +231,7 @@ public final class Ad {
 	// behavioural operations
 	public void markAsSold() {
 		if (getQuantity() == 1)
-			myUser.deleteAd(id);
+			((User) account).deleteAd(id);
 		else
 			setQuantity(getQuantity() - 1);
 	}
@@ -248,7 +249,7 @@ public final class Ad {
 		return "Ad [date=" + date + ", description=" + description + ", title=" + title + ", category=" + category
 				+ ", price=" + price + ", quantity=" + quantity + ", type=" + type + ", isSold=" + isSold
 				+ ", startDateHighlight=" + startDateHighlight + ", finishDateHighlight=" + finishDateHighlight
-				+ ", id=" + id + ", myUser=" + myUser + ", myUserStr=" + myUserStr + ", isConvalidated="
+				+ ", id=" + id + ", myUser=" + account + ", myUserStr=" + username + ", isConvalidated="
 				+ isConvalidated + ", myHighlight=" + myHighlight + ", format=" + format + "]";
 	}
 

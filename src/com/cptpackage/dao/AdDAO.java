@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cptpackage.account.Account;
 import com.cptpackage.account.User;
 import com.cptpackage.ad.Ad;
 import com.cptpackage.bean.AddAdBean;
@@ -21,11 +22,11 @@ public class AdDAO {
 		dbManager = DBManager.getInstance();
 	}
 
-	public List<Ad> loadMyAds(User user) throws SQLException, ParseException {
-		ResultSet result = dbManager.getMyAds(user.getUsername());
+	public List<Ad> loadMyAds(Account account) throws SQLException, ParseException {
+		ResultSet result = dbManager.getMyAds(account.getUsername());
 		List<Ad> tmp = fetchAd(result);
 		for (int i = 0; i < tmp.size(); i++)
-			tmp.get(i).setMyUserObj(user);
+			tmp.get(i).setAccount(account);
 		return tmp;
 	}
 
@@ -66,7 +67,6 @@ public class AdDAO {
 			ad.setType(result.getString("Type"));
 			ad.setStatus(result.getInt("isSold"));
 			ad.setQuantity(result.getInt("Quantity"));
-			System.out.println(ad.toString());
 			myAds.add(ad);
 		}
 		return myAds;

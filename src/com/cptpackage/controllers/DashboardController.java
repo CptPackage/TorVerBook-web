@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cptpackage.ad.Ad;
+import com.cptpackage.constants.RequestAttributes;
 import com.cptpackage.dao.AdDAO;
 
 public class DashboardController extends AuthenticatedController {
@@ -24,7 +25,7 @@ public class DashboardController extends AuthenticatedController {
 			if (authenticatedUser) {
 				List<Ad> ads = AdDAO.getInstance().getHomepageAdsList();
 				if (ads != null && !ads.isEmpty()) {
-					req.setAttribute("ads-list", ads);
+					req.setAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME, ads);
 				}
 				req.getRequestDispatcher("/dashboard.jsp").forward(req, resp);
 			}

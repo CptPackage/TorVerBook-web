@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.cptpackage.constants.RequestAttributes"%>
+<%@page import="com.cptpackage.ad.Ad"%>
+<%@page import="java.util.List"%>
 <html lang="Java">
 
 <head>
@@ -99,18 +103,35 @@
 			</div>
 
 			<div class="ads-container">
+				<%
+					Object listObj = request.getAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME);
+					List<Ad> list = new ArrayList<Ad>();
+					if (listObj != null) {
+						list = (List<Ad>) listObj;
+					}
+						for (int i = 0; i < list.size(); i++) {
+							Ad ad = list.get(i);
+				%>
 				<ad class="ad-container">
-				<div class="title">Data Structures and Algorithms</div>
+				<div class="title"><%=ad.getTitle()%></div>
 				<div class="info-container">
 					<span class="price"><i
-						class="price-icon fa fa-money-check-alt"></i> 15</span> <span
-						class="quantity">(15 Pieces left)</span>
+						class="price-icon fa fa-money-check-alt"></i> <%=ad.getPrice()%></span> <span
+						class="quantity">(<%=ad.getQuantity()%> left)
+					</span>
 				</div>
-				<div class="description">A book that regards the computer
-					science's most essential concepts which are the computer data
-					structures and algorithms.</div>
+				<div class="description"><%=ad.getDescription()%></div>
+				<h6>
+					<em class="fa fa-book"></em>
+					<%=ad.getCategory()%></h6>
+				<h6>
+					<em class="fa fa-user"></em>
+					<%=ad.getOwnerUsername()%></h6>
 				<button class="btn btn-primary send-message">Send Message</button>
 				</ad>
+				<%
+					}
+				%>
 			</div>
 
 			</panel>
@@ -118,24 +139,24 @@
 			<panel class="right-panel col-lg-3">
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
 			</div>
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
@@ -143,12 +164,12 @@
 
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />

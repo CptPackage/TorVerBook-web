@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet {
 			Account account = accountDao.logIn(username, password);
 			if (account != null) {
 				req.getSession().setAttribute(RequestAttributes.AUTHENTICATED_ATTRIBUTE_NAME, true);
-				req.getSession().setAttribute(RequestAttributes.USERNAME_ATTRIBUTE_NAME, account);
+				req.getSession().setAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME, account);
 				resp.sendRedirect(UrlRoutes.DASHBOARD_FULL_URL);
 			} else {
 				req.setAttribute("errorMessage", "Wrong Credentials");

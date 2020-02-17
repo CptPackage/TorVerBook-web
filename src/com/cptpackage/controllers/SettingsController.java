@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cptpackage.account.Account;
+import com.cptpackage.constants.RequestAttributes;
+
 public class SettingsController extends AuthenticatedController {
 
 	private static final long serialVersionUID = 1824973637829886223L;
@@ -22,7 +25,7 @@ public class SettingsController extends AuthenticatedController {
 			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
 		}
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		super.doPost(req, resp);
