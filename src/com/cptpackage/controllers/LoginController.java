@@ -2,7 +2,6 @@ package com.cptpackage.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -57,7 +56,7 @@ public class LoginController extends HttpServlet {
 				req.setAttribute("errorMessage", "Wrong Credentials");
 				doGet(req, resp);
 			}
-		} catch (IOException | SQLException | ParseException ex) {
+		} catch (IOException | SQLException ex) {
 			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
 		}
 	}
