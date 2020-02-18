@@ -64,23 +64,6 @@
 			</a></panel>
 
 			<panel class="central-panel col-lg-6">
-			<div class="reviews-container">
-				<review>
-				<div class="book-info">
-					<div class="book-title">Data Structures and Algorithms</div>
-					<div class="book-rating">
-						<em class="fas fa-star"></em> <em class="fas fa-star"></em> <em
-							class="fas fa-star"></em> <em class="fas fa-star"></em> <em
-							class="fas fa-star"></em>
-					</div>
-					<div class="book-description">A book that regards the
-						computer science's most essential concepts which are the computer
-						data structures and algorithms.</div>
-				</div>
-				<div class="personal-opinion">I have that book!</div>
-				<h6>-LudovicoErCojone</h6>
-				</review>
-			</div>
 			</panel>
 
 			<panel class="right-panel col-lg-3">

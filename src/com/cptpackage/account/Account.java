@@ -92,8 +92,7 @@ public abstract class Account implements Serializable {
 	}
 
 	public boolean isValid() {
-		return username != null && email != null && password != null && name != null && surname != null
-				&& birthDate != null && phoneNumber != null;
+		return username != null && email != null && password != null && name != null && surname != null;
 	}
 
 	@Override
