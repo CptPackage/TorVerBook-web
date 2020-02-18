@@ -21,6 +21,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>logoutController</servlet-name>
+		<servlet-class>com.cptpackage.controllers.LogoutController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>logoutController</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>signUpController</servlet-name>
 		<servlet-class>com.cptpackage.controllers.SignUpController</servlet-class>
 	</servlet>

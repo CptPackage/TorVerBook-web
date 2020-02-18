@@ -62,15 +62,19 @@
 				<button class="active">
 					<em class="fa fa-star" /></em> Favourite List
 				</button>
-			</a> </panel>
+			</a> <a href="/TorVerBook-Web/logout">
+				<button>
+					<em class="fa fa-sign-out-alt" /></em> Logout
+				</button>
+			</a></panel>
 			<panel class="central-panel col-lg-6">
 			<div class="ads-container">
 				<%
-				Object listObj = request.getAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME);
-				List<Ad> list = new ArrayList<Ad>();
-				if (listObj != null) {
-					list = (List<Ad>) listObj;
-				}
+					Object listObj = request.getAttribute(RequestAttributes.ADS_LIST_ATTRIBUTE_NAME);
+					List<Ad> list = new ArrayList<Ad>();
+					if (listObj != null) {
+						list = (List<Ad>) listObj;
+					}
 					for (int i = 0; i < list.size(); i++) {
 						Ad ad = list.get(i);
 				%>

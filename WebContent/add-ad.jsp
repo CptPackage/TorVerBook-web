@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<%@page import="com.cptpackage.constants.UrlRoutes"%>
+<%@page import="com.cptpackage.constants.RequestAttributes"%>
+<html lang="Java">
 
 <head>
 <!-- Charset & Responsiveness Metadata -->
@@ -13,9 +15,7 @@
 
 <!-- Bootstrap CSS CDN -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 <!-- Google Fonts API CDN -->
 <link
@@ -25,7 +25,7 @@
 	href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700&display=swap"
 	rel="stylesheet">
 
-<title>TorverBook - Dashboard</title>
+<title>TorverBook - Add Ad</title>
 </head>
 
 <body>
@@ -34,7 +34,8 @@
 	</header>
 	<div id="content-container">
 		<div class="row main-panels-container">
-			<panel class="left-panel col-lg-3"> <a href="/TorVerBook-Web/dashboard">
+			<panel class="left-panel col-lg-3"> <a
+				href="/TorVerBook-Web/dashboard">
 				<button>
 					<em class="fa fa-home" /></em> Home
 				</button>
@@ -58,33 +59,51 @@
 				<button>
 					<em class="fa fa-star" /></em> Favourite List
 				</button>
+			</a> <a href="/TorVerBook-Web/logout">
+				<button>
+					<em class="fa fa-sign-out-alt" /></em> Logout
+				</button>
 			</a> </panel>
 
 			<panel class="central-panel col-lg-6">
-			<form action="/TorVerBook-Web/add-ad">
+			<form method="POST" action="<%= UrlRoutes.ADD_AD_FULL_URL %>">
 				<div class="form-group">
-					<label for="username-input">Ad Title</label> <input type="text"
-						class="form-control" id="username-input"
+					<label for="ad-title-input">Ad Title</label> <input type="text"
+						class="form-control" id="ad-title-input"
+						name="<%=RequestAttributes.AD_TITLE_ATTRIBUTE_NAME%>"
 						placeholder="Java For Dummies">
 				</div>
 				<div class="form-group">
-					<label for="username-input">Ad Description</label>
-					<textarea type="" class="form-control" id="description-input">
-                            </textarea>
+					<label for="ad-description-input">Ad Description</label>
+					<textarea class="form-control" id="ad-description-input"
+						name="<%=RequestAttributes.AD_DESCRITPION_ATTRIBUTE_NAME%>"></textarea>
 				</div>
+
 				<div class="form-group">
-					<label for="username-input">Price</label> <input type="text"
-						class="form-control" id="price-input" placeholder="($) 35">
+					<label for="ad-type-input">Type</label> <select
+						class="custom-select custom-select-sm" id="ad-type-input"
+						name="<%=RequestAttributes.AD_TYPE_ATTRIBUTE_NAME%>">
+						<option>SALE</option>
+						<option>EXCHANGE</option>
+					</select>
 				</div>
+
 				<div class="form-group">
-					<label for="username-input">Quantity</label> <input type="text"
-						class="form-control" id="username-input">
+					<label for="ad-price-input">Price</label> <input type="text"
+						class="form-control" id="ad-price-input" placeholder="($) 35"
+						name="<%=RequestAttributes.AD_PRICE_ATTRIBUTE_NAME%>">
+				</div>
+
+				<div class="form-group">
+					<label for="ad-quantity-input">Quantity</label> <input type="text"
+						class="form-control" id="ad-quantity-input"
+						name="<%=RequestAttributes.AD_QUANTITY_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
 					<label for="category-input">College Course</label> <select
-						class="custom-select custom-select-sm" id="category-input">
-						<option>ANY</option>
+						class="custom-select custom-select-sm" id="category-input"
+						name="<%=RequestAttributes.AD_CATEGORY_ATTRIBUTE_NAME%>">
 						<option>ALGORITHMS</option>
 						<option>MATH</option>
 						<option>HISTORY</option>
@@ -101,8 +120,9 @@
 
 
 				<div class="form-group">
-					<label for="category-input">Styling</label> <select
-						class="custom-select custom-select-sm" id="category-input">
+					<label for="highlight-input">Highlight</label> <select
+						class="custom-select custom-select-sm" id="highlight-input"
+						name="<%=RequestAttributes.AD_HIGHLIGHT_ATTRIBUTE_NAME%>">
 						<option>BASE</option>
 						<option>MEDIUM</option>
 						<option>SUPER</option>
@@ -110,13 +130,15 @@
 				</div>
 
 				<div class="form-group">
-					<label for="birth-date-input">From:</label> <input type="date"
-						class="form-control" id="birth-date-input" placeholder="">
+					<label for="ad-from-date-input">From:</label> <input type="date"
+						class="form-control" id="ad-from-date-input" placeholder=""
+						name="<%=RequestAttributes.AD_HIGHLIGHT_FROM_DATE_ATTRIBUTE_NAME%>">
 				</div>
 
 				<div class="form-group">
-					<label for="birth-date-input">To:</label> <input type="date"
-						class="form-control" id="birth-date-input" placeholder="">
+					<label for="ad-to-date-input">To:</label> <input type="date"
+						class="form-control" id="ad-to-date-input" placeholder=""
+						name="<%=RequestAttributes.AD_HIGHLIGHT_TO_DATE_ATTRIBUTE_NAME%>">
 				</div>
 				<button class="btn btn-light btn-md">Add Ad</button>
 			</form>
@@ -125,24 +147,24 @@
 			<panel class="right-panel col-lg-3">
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
 			</div>
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />
@@ -150,12 +172,12 @@
 
 			<div class="chat-container">
 				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
-					<h5 class="chat-message">${username}:Hellothisisatest message</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
+					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
 				</div>
 				<input type="text" class="form-control chat-message-input"
 					placeholder="Enter your message..." />

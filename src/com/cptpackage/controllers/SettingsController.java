@@ -2,7 +2,6 @@ package com.cptpackage.controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -38,18 +37,24 @@ public class SettingsController extends AuthenticatedController {
 						.getAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME);
 				String originalUsername = originalAccount.getUsername();
 				Account modifiedAccount = mapRequestParamToAccountObj(req);
-				boolean updated = AccountDAO.getInstance().updateAccountInfo(originalUsername, modifiedAccount);
-				if (updated) {
-					req.getSession().setAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME, modifiedAccount);
+
+				if (modifiedAccount.isValid()) {
+					boolean updated = AccountDAO.getInstance().updateAccountInfo(originalUsername, modifiedAccount);
+					if (updated) {
+						req.getSession().setAttribute(RequestAttributes.ACCOUNT_ATTRIBUTE_NAME, modifiedAccount);
+					}
+
+				} else {
+					req.setAttribute(RequestAttributes.ERROR_MESSAGE_ATTRIBUTE_NAME, "Please insert valid data!");
 				}
 			}
 			req.getRequestDispatcher("/settings.jsp").forward(req, resp);
-		} catch (ServletException | IOException | SQLException | ParseException ex) {
+		} catch (ServletException | IOException | SQLException ex) {
 			Logger.getLogger(this.getClass().getSimpleName()).severe(ex.getMessage());
 		}
 	}
 
-	private Account mapRequestParamToAccountObj(HttpServletRequest req) throws SQLException, ParseException {
+	private Account mapRequestParamToAccountObj(HttpServletRequest req) {
 		String username = req.getParameter(RequestAttributes.USERNAME_ATTRIBUTE_NAME);
 		String password = req.getParameter(RequestAttributes.PW_ATTRIBUTE_NAME);
 		String firstName = req.getParameter(RequestAttributes.FIRSTNAME_ATTRIBUTE_NAME);

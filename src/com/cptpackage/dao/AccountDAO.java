@@ -5,7 +5,6 @@ import static com.cptpackage.account.AccountType.USER;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.time.LocalDate;
 
 import com.cptpackage.account.Account;
@@ -23,7 +22,7 @@ public class AccountDAO {
 	private ResultSet result;
 
 	// login case
-	public Account logIn(String username, String password) throws SQLException, ParseException {
+	public Account logIn(String username, String password) throws SQLException {
 		dbManager = DBManager.getInstance();
 		AccountType accountType = getAccountTypeByPrefix(username);
 		if (accountType == USER) {
@@ -43,7 +42,7 @@ public class AccountDAO {
 		dbManager.insertNewUser(user);
 	}
 
-	private Account createAccountObject(ResultSet result, AccountType accountType) throws SQLException, ParseException {
+	private Account createAccountObject(ResultSet result, AccountType accountType) throws SQLException {
 		Account account = null;
 		if (accountType == USER) {
 			User user = new User(result.getString("Name"), result.getString("Surname"), result.getString("Username"),
@@ -97,7 +96,6 @@ public class AccountDAO {
 			instance = new AccountDAO();
 		return instance;
 	}
-
 
 	public AccountType getAccountTypeByPrefix(String username) {
 		final String prefixFlag = "@";

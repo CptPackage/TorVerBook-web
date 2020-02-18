@@ -6,7 +6,7 @@ import java.util.Date;
 public abstract class Account implements Serializable {
 
 	private static final long serialVersionUID = 2546587225337459667L;
-	
+
 	// User's account info
 	protected String username;
 	protected String email;
@@ -38,7 +38,7 @@ public abstract class Account implements Serializable {
 	public Date getBirthDate() {
 		return this.birthDate;
 	}
-	
+
 	public String getBirthDateString() {
 		return this.birthDateString;
 	}
@@ -70,7 +70,7 @@ public abstract class Account implements Serializable {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	
+
 	public void setBirthDate(String birthDate) {
 		this.birthDateString = birthDate;
 	}
@@ -91,12 +91,9 @@ public abstract class Account implements Serializable {
 		this.password = password;
 	}
 
-	public void changeProfileSettings(String name, String surname, String username, String email, String pwdHash){
-		this.name = name;
-		this.surname = surname;
-		this.username = username;
-		this.email = email;
-		this.password = pwdHash;
+	public boolean isValid() {
+		return username != null && email != null && password != null && name != null && surname != null
+				&& birthDate != null && phoneNumber != null;
 	}
 
 	@Override
@@ -105,5 +102,5 @@ public abstract class Account implements Serializable {
 				+ ", surname=" + surname + ", birthDate=" + birthDate + ", birthDateString=" + birthDateString
 				+ ", phoneNumber=" + phoneNumber + "]";
 	}
-	
+
 }

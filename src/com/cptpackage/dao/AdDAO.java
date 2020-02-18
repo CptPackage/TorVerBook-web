@@ -72,8 +72,8 @@ public class AdDAO {
 		return myAds;
 	}
 
-	public boolean createNewAd(AddAdBean addAdBean) throws SQLException, ParseException {
-		User user = (User) AccountDAO.getInstance().getAccountObject();
+	public boolean createNewAd(Account account, AddAdBean addAdBean) throws SQLException, ParseException {
+		User user = (User) account;
 		Ad ad = new Ad(user.getUsername(), 0);
 		ad.setDate(LocalDate.now().toString());
 		ad.setDescription(addAdBean.getDescription());
@@ -85,11 +85,7 @@ public class AdDAO {
 		ad.setStartHighlight(addAdBean.getStartHighlightToString());
 		ad.setFinishHighlight(addAdBean.getEndHighlightToString());
 		ad.setHighlight(addAdBean.getHighlight());
-		if (dbManager.addAd(ad)) {
-			user.addAd(ad);
-			return true;
-		}
-		return false;
+		return dbManager.addAd(ad);
 	}
 
 	public boolean addAdToFavouriteList(long id) throws SQLException {
@@ -105,17 +101,11 @@ public class AdDAO {
 	}
 
 	public boolean deleteAd(long id) throws SQLException {
-		User user = (User) AccountDAO.getInstance().getAccountObject();
-		user.deleteAd(id);
 		return dbManager.deleteAd(id);
 	}
 
 	public boolean markAsSold(long id) throws SQLException {
-		User user = (User) AccountDAO.getInstance().getAccountObject();
-		if (user.markAsSold(id))
-			return dbManager.markAsSold(id);
-		else
-			return dbManager.deleteAd(id);
+		return dbManager.markAsSold(id);
 	}
 
 	public static AdDAO getInstance() {

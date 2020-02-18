@@ -7,8 +7,6 @@ public class AdBean {
 	private final long id;
 	private final String title;
 	private final String description;
-//	private final String username;
-//	private final String adType;
 	private final int price;
 	private final String category;
 	private final Color textColor;
@@ -21,10 +19,8 @@ public class AdBean {
 		this.id = ad.getId();
 		title = ad.getTitle();
 		description = ad.getDescription();
-//		username = ad.getOwnerUsername();
-//		adType = ad.getType().toString();
 		price = ad.getPrice();
-		category = ad.getCategory().toString();
+		category = ad.getCategory();
 		textColor = ad.getTextColor();
 		bgColor = ad.getBackgroundColor();
 		thickness = ad.getThickness();
@@ -42,14 +38,6 @@ public class AdBean {
 	public String getDescription() {
 		return description;
 	}
-
-//	public String getUsername() {
-//		return username;
-//	}
-//
-//	public String getAdType() {
-//		return adType;
-//	}
 
 	public int getPrice() {
 		return price;

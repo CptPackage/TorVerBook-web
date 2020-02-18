@@ -3,7 +3,7 @@
 <%@page import="com.cptpackage.constants.RequestAttributes"%>
 <%@page import="com.cptpackage.ad.Ad"%>
 <%@page import="java.util.List"%>
-<html>
+<html lang="Java">
 
 <head>
 <!-- Charset & Responsiveness Metadata -->
@@ -61,7 +61,11 @@
 				<button>
 					<em class="fa fa-star" /></em> Favourite List
 				</button>
-			</a> </panel>
+			</a> <a href="/TorVerBook-Web/logout">
+				<button>
+					<em class="fa fa-sign-out-alt" /></em> Logout
+				</button>
+			</a></panel>
 
 			<panel class="central-panel col-lg-6">
 			<div class="ads-container">

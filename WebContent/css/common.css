@@ -108,7 +108,7 @@ header #header-title {
 
 .main-panels-container panel.left-panel button {
   width: 100%;
-  height: calc(100% / 6);
+  height: calc(100% / 7);
   background: var(--primary-color);
   border-style: none;
   font-family: var(--primary-font);
@@ -118,7 +118,7 @@ header #header-title {
   text-align: left;
 }
 
-.main-panels-container panel.left-panel button i {
+.main-panels-container panel.left-panel button em {
   float: left;
   margin: 6px 20px 0px 10px;
 }

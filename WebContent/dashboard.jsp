@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.cptpackage.constants.UrlRoutes"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.cptpackage.constants.RequestAttributes"%>
 <%@page import="com.cptpackage.ad.Ad"%>
@@ -61,13 +62,20 @@
 				<button>
 					<em class="fa fa-star" /></em> Favourite List
 				</button>
-			</a> </panel>
+			</a>  <a href="/TorVerBook-Web/logout">
+				<button>
+					<em class="fa fa-sign-out-alt" /></em> Logout
+				</button>
+			</a> 
+			
+			</panel>
 			<panel class="central-panel col-lg-6">
 			<div class="search-bar-container">
-				<form action="">
+				<form method="GET" action="<%=UrlRoutes.DASHBOARD_FULL_URL%>">
 					<div class="form-group">
 						<label for="category-input">Category</label> <select
-							class="custom-select custom-select-sm" id="category-input">
+							class="custom-select custom-select-sm" id="category-input"
+							name="<%=RequestAttributes.FILTER_CATEGORY_ATTRIBUTE_NAME%>">
 							<option>ANY</option>
 							<option>ALGORITHMS</option>
 							<option>MATH</option>
@@ -85,7 +93,8 @@
 
 					<div class="form-group">
 						<label for="type-input">Type</label> <select
-							class="custom-select custom-select-sm" id="type-input">
+							class="custom-select custom-select-sm" id="type-input"
+							name="<%=RequestAttributes.FILTER_TYPE_ATTRIBUTE_NAME%>">
 							<option>SALE</option>
 							<option>EXCHANGE</option>
 						</select>
@@ -96,9 +105,10 @@
 							id="price-label-value"></span>
 						</label> <input type="range" id="price-input" class="custom-range"
 							oninput="$('#price-label-value').text('(' + this.value + ')') "
-							min="1" max="100" value="1" />
+							min="1" max="100" value="100"
+							name="<%=RequestAttributes.FILTER_PRICE_ATTRIBUTE_NAME%>" />
 					</div>
-					<button class="search-button btn btn-light">Search</button>
+					<button type="submit" class="search-button btn btn-light">Search</button>
 				</form>
 			</div>
 
@@ -109,15 +119,15 @@
 					if (listObj != null) {
 						list = (List<Ad>) listObj;
 					}
-						for (int i = 0; i < list.size(); i++) {
-							Ad ad = list.get(i);
+					for (int i = 0; i < list.size(); i++) {
+						Ad ad = list.get(i);
 				%>
 				<ad class="ad-container">
 				<div class="title"><%=ad.getTitle()%></div>
 				<div class="info-container">
-					<span class="price"><i
-						class="price-icon fa fa-money-check-alt"></i> <%=ad.getPrice()%></span> <span
-						class="quantity">(<%=ad.getQuantity()%> left)
+					<span class="price"><em
+						class="price-icon fa fa-money-check-alt"></em> <%=ad.getPrice()%></span>
+					<span class="quantity">(<%=ad.getQuantity()%> left)
 					</span>
 				</div>
 				<div class="description"><%=ad.getDescription()%></div>
@@ -181,21 +191,14 @@
 </body>
 
 
+
 <!-- Bootstrap JS CDN -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-	integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-	integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-	crossorigin="anonymous"></script>
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <!-- FontAwesome JS CDN -->
-<script src="https://kit.fontawesome.com/8526e38f8c.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/8526e38f8c.js"></script>
 
 </html>

@@ -17,7 +17,7 @@ public class DBManager {
 
 	private static String dbUrl = "jdbc:mysql://torverbook.clnw3ivtnsjr.eu-west-2.rds.amazonaws.com:3306/torverbook?autoReconnect=true&useSSL=false";
 	private static String user = "admin";
-	private static final String pwd = "QVIavmKCXTKFkSbRMX34";
+	private static final String PW = "QVIavmKCXTKFkSbRMX34";
 	private static String driverClass = "com.mysql.jdbc.Driver";
 	private static Logger logger = Logger.getLogger("DBManager");
 	private static DBManager instance = null;
@@ -168,7 +168,7 @@ public class DBManager {
 		stmt = null;
 		conn = null;
 
-		conn = DriverManager.getConnection(dbUrl, user, pwd);
+		conn = DriverManager.getConnection(dbUrl, user, PW);
 		stmt = conn.createStatement();
 	}
 
@@ -185,7 +185,7 @@ public class DBManager {
 		Statement statement;
 
 		try {
-			dbConnection = DriverManager.getConnection(dbUrl, user, pwd);
+			dbConnection = DriverManager.getConnection(dbUrl, user, PW);
 			statement = dbConnection.createStatement();
 			if (action == DB_ACTIONS.EXECUTE) {
 				actionResult = new DBActionResult(!statement.execute(statementCmd));

@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.cptpackage.account.Account;
-import com.cptpackage.account.User;
 import com.cptpackage.dao.HighlightDAO;
 import com.cptpackage.highlight.Highlight;
 
@@ -90,7 +89,6 @@ public final class Ad {
 	public AdType getType() {
 		return this.type;
 	}
-
 
 	// Highlight attribute
 	public Color getBackgroundColor() {
@@ -228,14 +226,6 @@ public final class Ad {
 			this.type = AdType.EXCHANGE;
 	}
 
-	// behavioural operations
-	public void markAsSold() {
-		if (getQuantity() == 1)
-			((User) account).deleteAd(id);
-		else
-			setQuantity(getQuantity() - 1);
-	}
-
 	public void setConvalidated(boolean isConvalidated) {
 		this.isConvalidated = isConvalidated;
 	}
@@ -253,6 +243,4 @@ public final class Ad {
 				+ isConvalidated + ", myHighlight=" + myHighlight + ", format=" + format + "]";
 	}
 
-	
-	
 }
