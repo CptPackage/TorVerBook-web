@@ -66,7 +66,7 @@
 			</a> </panel>
 
 			<panel class="central-panel col-lg-6">
-			<form method="POST" action="<%= UrlRoutes.ADD_AD_FULL_URL %>">
+			<form method="POST" action="<%=UrlRoutes.ADD_AD_FULL_URL%>">
 				<div class="form-group">
 					<label for="ad-title-input">Ad Title</label> <input type="text"
 						class="form-control" id="ad-title-input"
@@ -145,44 +145,10 @@
 			</panel>
 
 			<panel class="right-panel col-lg-3">
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
+			<div class="no-messages-container">
+				<em class="fa fa-envelope-open fa-5x"></em>
+				<h1>No messages yet..</h1>
 			</div>
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
 			</panel>
 		</div>
 	</div>

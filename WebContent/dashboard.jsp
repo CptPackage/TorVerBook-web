@@ -62,13 +62,11 @@
 				<button>
 					<em class="fa fa-star" /></em> Favourite List
 				</button>
-			</a>  <a href="/TorVerBook-Web/logout">
+			</a> <a href="/TorVerBook-Web/logout">
 				<button>
 					<em class="fa fa-sign-out-alt" /></em> Logout
 				</button>
-			</a> 
-			
-			</panel>
+			</a> </panel>
 			<panel class="central-panel col-lg-6">
 			<div class="search-bar-container">
 				<form method="GET" action="<%=UrlRoutes.DASHBOARD_FULL_URL%>">
@@ -147,44 +145,10 @@
 			</panel>
 
 			<panel class="right-panel col-lg-3">
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
+			<div class="no-messages-container">
+				<em class="fa fa-envelope-open fa-5x"></em>
+				<h1>No messages yet..</h1>
 			</div>
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-					<h5 class="chat-message">${username}:Hellothisisatestmessage</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
 			</panel>
 		</div>
 	</div>
@@ -194,7 +158,8 @@
 
 <!-- Bootstrap JS CDN -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-<script	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 

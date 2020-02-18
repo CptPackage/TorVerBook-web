@@ -119,8 +119,7 @@
 				<div class="form-group">
 					<label for="password-input">Password</label> <input type="password"
 						class="form-control" id="password-input"
-						placeholder="*****************"
-						value="<%=account.getPassword()%>"
+						placeholder="*****************" value="<%=account.getPassword()%>"
 						name="<%=RequestAttributes.PW_ATTRIBUTE_NAME%>">
 				</div>
 				<div class="form-group">
@@ -134,44 +133,10 @@
 			</panel>
 
 			<panel class="right-panel col-lg-3">
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
+			<div class="no-messages-container">
+				<em class="fa fa-envelope-open fa-5x"></em>
+				<h1>No messages yet..</h1>
 			</div>
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
-			<div class="chat-container">
-				<div class="chat-messages-container">
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-					<h5 class="chat-message">${username}:Hellothisisa test message</h5>
-				</div>
-				<input type="text" class="form-control chat-message-input"
-					placeholder="Enter your message..." />
-			</div>
-
 			</panel>
 		</div>
 	</div>

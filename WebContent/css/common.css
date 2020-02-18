@@ -131,9 +131,28 @@ header #header-title {
   background: var(--secondary-color);
 }
 
+.main-panels-container panel.right-panel{
+	  background-color: #44d380;
+}
+
+.main-panels-container panel.right-panel .no-messages-container{
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 flex-direction: column;
+	 height: 100%;
+	 color: #ecf0f1;
+}
+
+.main-panels-container panel.right-panel .no-messages-container h1{
+	font-family: var(--primary-font);
+	font-weight: 600;
+	font-size: 30px;
+}
+
 .main-panels-container panel.right-panel .chat-container {
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .main-panels-container panel.right-panel .chat-container .chat-message-input {
